@@ -43,3 +43,43 @@ such that their amplitudes sum up to 1.
 
 <p> Now the result of the Hadamard operation can be directly obtained by the matrix multiplication by Hadamard matrix which is kronecker with identity and the state matrix </p>
 
+
+<h2> Modified approach </h2>
+
+<p> The previous approach has drawbacks on extending the higher bits as there is not much flexibility in describing operations especially CNOT in this case. We don't have am implementation if we want to apply CNOT for first and third bit and leave second bit uninterrupted. Since both target qubits are adjacent the previous approach won't work. So we try a different approach in generating the matrix.</p>
+
+<p> For each gate single qubit gate we can directly create a matrix of 2x2. But the implementation for 2 qubit gates are changed to prvoide the mentioned flexibility.For example CNOT gate has a control and target bits which can be in any position. So instead of predefining the matrix we just store the location of control and target bits. Now we iterate through each comnibation of bits (2^n combinations for n qubit system) and find out the binary representation. Now we iterate through the representation and apply Kronecker product as below </p>
+
+<h4> Applying Hadamard to second bit </h4>
+
+<h5> For 000 we get</h5>
+
+<img src="" alt="mat4"/>
+
+<h5> Applying CNOT to first and third qubit with first qubit being the control and third being target </h5>
+
+<img src="" alt="mat5"/>
+
+<p> This method provide flexibility in this way and is better than the classical approach </p>
+
+<h2> Implementation </h2>
+
+```
+Run final.py after setting the circuit as JSON format
+
+```
+<p> The simulator uses JSON format to set the circuit as below. First we decide the number if qubits and set it to ground state. Then we pass the circuit and make measurement. </p>
+
+```
+my_circuit = [
+{ "gate": "h", "target": [0,1] },
+#first bit is control and second is target 
+{ "gate": "cx", "target": [0,2] }
+]
+
+```
+<p>This is similar to the below circuit.Since we use little Endian format which is same as Qiskit Implementation we can directy test our implementation with IBM Qiskit.</p>
+
+<img src="" alt="qiskit"/>
+
+<h2> Results </h2>
