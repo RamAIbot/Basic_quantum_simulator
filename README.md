@@ -11,10 +11,10 @@ uses Little Endian format to describe the qubits where 0 is assigned to LSB and 
 
 <h2> Approach Used in design </h2>
 
-<p> The initial approach was to take kronecker product of the gates on the targets bits and multiply with identity for non target bits. This approach is implemented in classic.py.</p>
+<p> The initial approach was to take kronecker product of the gates on the targets bits and the identity for non target bits. This approach is implemented in classic.py.</p>
 
 <h4> Example </h4>
-<p> Suppose if we need to implement Hadamard gate operation on the 0th bit in a 2 qubit system, We first take the kronecker product Hadamard matrix for the zeroth bit and multiply with Identity for second bit as no operations is performed for second bit. Conversely if we want to perform Hadamard to second qubit we take kronecker of identity matrix signifying no operations for the first qubit and Hadamard matrix for second qubit.</p>
+<p> Suppose if we need to implement Hadamard gate operation on the 0th bit in a 2 qubit system, We first take the kronecker product Hadamard matrix for the zeroth bit and the Identity for second bit as no operations is performed for second bit. Conversely if we want to perform Hadamard to second qubit we take kronecker of identity matrix signifying no operations for the first qubit and Hadamard matrix for second qubit.</p>
 
 <h5> Kronecker Product </h5>
 
@@ -61,6 +61,11 @@ such that their amplitudes sum up to 1.
 <img src="" alt="mat5"/>
 
 <p> This method provide flexibility in this way and is better than the classical approach </p>
+
+<h2> Measurement </h2>
+
+<p> Now after applying the gates to our initial state, we get the weight vector of states. We use choices function from random library to sample the bits based on the weights vector. In our simulator we perform the above measurement 1000 times and get the results.<p>
+
 
 <h2> Implementation </h2>
 
