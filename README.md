@@ -18,11 +18,11 @@ uses Little Endian format to describe the qubits where 0 is assigned to LSB and 
 
 <h5> Kronecker Product </h5>
 
-<img src="" alt="mat3"/>
+<img src="mat2.JPG" alt="mat3"/>
 
 <h5> Hadamard for first qubit example </h5>
 
-<img src="" alt="mat1"/>
+<img src="mat1.JPG" alt="mat1"/>
 
 <h4> State Repressentation </h4>
 
@@ -37,9 +37,12 @@ uses Little Endian format to describe the qubits where 0 is assigned to LSB and 
   <LI> 11 => [0 1] Kronecker [0 1] </LI>
 </UL>
 
-such that their amplitudes sum up to 1.
+<p>such that their amplitudes sum up to 1.</p>
 
-<img src="" alt="mat2"/>
+<p> [ 1 0 0 0 ] for state 0,0 </p>
+<p> [ 0 1 0 0 ] for state 0,1 </p>
+<p> [ 0 0 1 0 ] for state 1,0 </p>
+<p> [ 0 0 0 1 ] for state 1,1 </p>
 
 <p> Now the result of the Hadamard operation can be directly obtained by the matrix multiplication by Hadamard matrix which is kronecker with identity and the state matrix </p>
 
@@ -54,11 +57,23 @@ such that their amplitudes sum up to 1.
 
 <h5> For 000 we get</h5>
 
-<img src="" alt="mat4"/>
+<img src="mat3.JPG" alt="mat4"/>
 
 <h5> Applying CNOT to first and third qubit with first qubit being the control and third being target </h5>
 
-<img src="" alt="mat5"/>
+<img src="mat4.JPG" alt="mat5"/>
+
+<img src="mat5.JPG" alt="mat6"/>
+
+<p> CNOT gate:
+[ 1, 0, 0, 0, 0, 0, 0, 0 ]
+[ 0, 1, 0, 0, 0, 0, 0, 0 ]
+[ 0, 0, 1, 0, 0, 0, 0, 0 ]
+[ 0, 0, 0, 1, 0, 0, 0, 0 ]
+[ 0, 0, 0, 0, 0, 1, 0, 0 ]
+[ 0, 0, 0, 0, 1, 0, 0, 0 ]
+[ 0, 0, 0, 0, 0, 0, 0, 1 ]
+[ 0, 0, 0, 0, 0, 0, 1, 0 ] </p>
 
 <p> This method provide flexibility in this way and is better than the classical approach </p>
 
