@@ -88,7 +88,90 @@ uses Little Endian format to describe the qubits where 0 is assigned to LSB and 
 Run final.py after setting the circuit as JSON format
 
 ```
-<p> The simulator uses JSON format to set the circuit as below. First we decide the number if qubits and set it to ground state. Then we pass the circuit and make measurement. </p>
+<p> The simulator uses JSON format to set the circuit as below. First we decide the number of qubits to use and set them to ground state. Then we pass the circuit and make measurement. </p>
+
+```
+my_qpu = get_ground_state(2) #setting number of qubits
+
+my_circuit = [
+{ "gate": "h", "target": [0,1] },
+#first bit is control and second is target 
+{ "gate": "cx", "target": [0,2] }
+]
+
+```
+<p>This is similar to the below circuit.Since we use little Endian format which is same as IBM Qiskit Implementation we can directy test our implementation with that of IBM Qiskit.</p>
+
+<h2> Results </h2>
+
+<h4> Example 1 </h4>
+
+<img src="Capture.JPG" alt="qiskit"/>
+
+<h4> Our simulator Output </h4>
+
+```
+my_circuit = [
+{ "gate": "h", "target": [0] },
+#first bit is control and second is target 
+{ "gate": "cx", "target": [0,1] }
+]
+
+O/P
+
+Qubit state
+[1 0 0 0]
+Output
+{'00': 481.0, '01': 0.0, '10': 0.0, '11': 519.0}
+
+```
+
+<h4> Example 2 </h4>
+
+<img src="Capture1.JPG" alt="qiskit1"/>
+
+<h4> Our simulator Output </h4>
+
+```
+my_circuit = [
+{ "gate": "h", "target": [0,1] },
+#first bit is control and second is target 
+{ "gate": "cx", "target": [0,1] }
+]
+
+Qubit state
+[1 0 0 0]
+Output
+{'00': 241.0, '01': 261.0, '10': 255.0, '11': 243.0}
+
+```
+
+<h4> Example 3 </h4>
+
+<img src="Capture2.JPG" alt="qiskit2"/>
+
+<h4> Our simulator Output </h4>
+
+```
+my_circuit = [
+{ "gate": "h", "target": [0] },
+#first bit is control and second is target 
+{ "gate": "cx", "target": [0,2] }
+]
+
+
+Qubit state
+[1 0 0 0 0 0 0 0]
+Output
+{'000': 509.0, '001': 0.0, '010': 0.0, '011': 0.0, '100': 0.0, '101': 491.0, '110': 0.0, '111': 0.0}
+
+```
+
+<h4> Example 4 </h4>
+
+<img src="Capture3.JPG" alt="qiskit3"/>
+
+<h4> Our simulator Output </h4>
 
 ```
 my_circuit = [
@@ -97,9 +180,49 @@ my_circuit = [
 { "gate": "cx", "target": [0,2] }
 ]
 
+Qubit state
+[1 0 0 0 0 0 0 0]
+Output
+{'000': 255.0, '001': 0.0, '010': 263.0, '011': 0.0, '100': 0.0, '101': 235.0, '110': 0.0, '111': 247.0}
+
 ```
-<p>This is similar to the below circuit.Since we use little Endian format which is same as Qiskit Implementation we can directy test our implementation with IBM Qiskit.</p>
 
-<img src="" alt="qiskit"/>
+<h4> Example 5 </h4>
 
-<h2> Results </h2>
+<img src="Capture4.JPG" alt="qiskit4"/>
+
+<h4> Our simulator Output </h4>
+
+```
+my_circuit = [
+{ "gate": "h", "target": [0,2] },
+#first bit is control and second is target 
+{ "gate": "cx", "target": [0,2] }
+]
+
+Qubit state
+[1 0 0 0 0 0 0 0]
+Output
+{'000': 251.0, '001': 270.0, '010': 0.0, '011': 0.0, '100': 254.0, '101': 225.0, '110': 0.0, '111': 0.0}
+
+```
+
+<h4> Example 6 </h4>
+
+<img src="Capture5.JPG" alt="qiskit5"/>
+
+<h4> Our simulator Output </h4>
+
+```
+my_circuit= [
+  { "gate": "u3", "params": { "theta": 3.1415, "phi": 1.5708, "lambda": -3.1415 }, "target": [0,1,2,3,4] }
+]
+
+Qubit state
+[1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0]
+Output
+{'00000': 0.0, '00001': 0.0, '00010': 0.0, '00011': 0.0, '00100': 0.0, '00101': 0.0, '00110': 0.0, '00111': 0.0, '01000': 0.0, '01001': 0.0, '01010': 0.0, '01011': 0.0, '01100': 0.0, '01101': 0.0, '01110': 0.0, '01111': 0.0, '10000': 0.0, '10001': 0.0, '10010': 0.0, '10011': 0.0, '10100': 0.0, '10101': 0.0, '10110': 0.0, '10111': 0.0, '11000': 0.0, '11001': 0.0, '11010': 0.0, '11011': 0.0, '11100': 0.0, '11101': 0.0, '11110': 0.0, '11111': 1000.0}
+
+```
+
+
