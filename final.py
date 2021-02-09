@@ -107,7 +107,7 @@ def get_operator(total_qubits, gate_unitary, target_qubits,gates):
             
    
     arr = np.array(arr)
-    print(arr.shape)
+    #print(arr.shape)
     #print(arr)
     return arr
 
@@ -151,7 +151,7 @@ def get_counts(state_vector, num_shots):
     for i in range(num_shots):
         state = measure_all(state_vector)
         arr[state] +=1
-    print(arr)
+    #print(arr)
     
     for i in range(len(state_vector)):
         num = np.binary_repr(i,width=int(num_qubits))

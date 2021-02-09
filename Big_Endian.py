@@ -54,7 +54,7 @@ def get_operator(total_qubits, gate_unitary, target_qubits):
         #print(binary[0])
         outer = []
         control_val = [1,0] if binary[control]=='0' else [0,1]
-        print(control_val)
+        #print(control_val)
         for j in range(int(num_qubits)):
             bit_val = int(binary[j])
             
@@ -83,7 +83,7 @@ def get_operator(total_qubits, gate_unitary, target_qubits):
             
    
     arr = np.array(arr)
-    print(arr.shape)
+    #print(arr.shape)
     return arr
 
 def run_program(initial_state, program):
@@ -126,7 +126,7 @@ def get_counts(state_vector, num_shots):
     for i in range(num_shots):
         state = measure_all(state_vector)
         arr[state] +=1
-    print(arr)
+    #print(arr)
     
     for i in range(len(state_vector)):
         num = np.binary_repr(i,width=int(num_qubits))
@@ -136,9 +136,9 @@ def get_counts(state_vector, num_shots):
 
 
 my_circuit = [
-{ "gate": "h", "target": [2] },
+{ "gate": "h", "target": [0] },
 #first bit is control and second is target 
-{ "gate": "cx", "target": [0,2] }
+{ "gate": "cx", "target": [0,1] }
 ]
     
 #my_circuit = [
@@ -149,7 +149,7 @@ my_circuit = [
 
 # Create "quantum computer" with 2 qubits (this is actually just a vector :) )
 
-my_qpu = get_ground_state(3)
+my_qpu = get_ground_state(2)
 #print(my_qpu)
 #print(get_operator(len(my_qpu), 'h',my_circuit[0]["target"]))
 #print(get_operator(len(my_qpu), 'cx',my_circuit[1]["target"]))
@@ -157,7 +157,7 @@ my_qpu = get_ground_state(3)
 ## Run circuit
 #
 final_state = run_program(my_qpu, my_circuit)
-print(final_state)
+#print(final_state)
 ##
 ##
 ### Read results
